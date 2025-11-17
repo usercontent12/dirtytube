@@ -94,7 +94,7 @@ def setup_logging(app):
     log_level = logging.DEBUG if app.debug else logging.INFO
     app.logger.setLevel(log_level)
 
-    # Console logging
+    # Console logging only
     console_handler = logging.StreamHandler()
     console_handler.setLevel(log_level)
     console_handler.setFormatter(logging.Formatter(
@@ -102,19 +102,7 @@ def setup_logging(app):
     ))
     app.logger.addHandler(console_handler)
 
-    # File logging
-    log_dir = "logs"
-    os.makedirs(log_dir, exist_ok=True)
-    file_handler = RotatingFileHandler(
-        os.path.join(log_dir, "app.log"),
-        maxBytes=2 * 1024 * 1024,  # 2 MB
-        backupCount=3
-    )
-    file_handler.setLevel(log_level)
-    file_handler.setFormatter(logging.Formatter(
-        "%(asctime)s [%(levelname)s] %(message)s"
-    ))
-    app.logger.addHandler(file_handler)
+   
 
 
 # ============================================================
