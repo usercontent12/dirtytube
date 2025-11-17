@@ -3,3 +3,4 @@ flask-cors
 requests
 Werkzeug
 boto3
+python-dotenv
