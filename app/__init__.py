@@ -65,6 +65,8 @@ def register_blueprints(app):
     from app.routes.main import main_bp
     from app.routes.video import video_bp
     from app.routes.related import related_bp
+    from app.routes.verification import verification_bp
+
 
     # API
     from app.routes.api import api_bp
