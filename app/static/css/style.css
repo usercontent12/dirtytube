@@ -767,9 +767,12 @@ p {
     font-weight: 600;
     font-size: var(--font-base);
     transition: var(--transition);
-    border: 1px solid transparent;
+    border: 2px solid #ef0303;
     cursor: pointer;
+    background-color: #2563eb;
+    color: white;
 }
+
 
 .btn:active {
     transform: scale(0.98);
