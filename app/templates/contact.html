@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+<style>
+    /* Responsive Iframe Wrapper */
+.responsive-iframe-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 160%; /* Adjust form height ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #141414;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.responsive-iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 12px;
+}
+
+/* Mobile override */
+@media (max-width: 768px) {
+    .responsive-iframe-container {
+        padding-bottom: 200%; /* Taller on mobile */
+    }
+}
+
+</style>
+{% block title %}Contact Us — DirtyTube{% endblock %}
+{% block og_title %}Contact DirtyTube{% endblock %}
+{% block og_description %}Have questions or business inquiries? Use our contact form to reach out to DirtyTube.{% endblock %}
+{% block twitter_title %}Contact DirtyTube{% endblock %}
+{% block twitter_description %}Reach out to us using the official DirtyTube contact form.{% endblock %}
+
+{% block content %}
+
+<section class="about-hero">
+    <div class="container about-container">
+        <h1>Contact Us</h1>
+        <p>Use the form below to get in touch with our team. We usually respond within 24–48 hours.</p>
+    </div>
+</section>
+
+<section class="about-section">
+    <div class="container">
+        <div class="responsive-iframe-container">
+    <iframe 
+        src="https://reachoutly.vercel.app/"
+        title="Contact Form — ReachOutly"
+        loading="lazy">
+    </iframe>
+</div>
+
+    </div>
+</section>
+
+{% endblock %}

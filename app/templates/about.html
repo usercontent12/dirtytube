@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+<style>.contact-form-wrapper {
+    margin-top: 25px;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-iframe {
+    width: 100%;
+    height: 600px; /* Adjustable */
+    border: none;
+    border-radius: 12px;
+    background: #141414;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .contact-iframe {
+        height: 650px;
+    }
+}
+</style>
+{% block title %}About DirtyTube — Watch Trending Videos Online{% endblock %}
+{% block og_title %}About DirtyTube — Your Destination for High-Quality Videos{% endblock %}
+{% block og_description %}Learn about DirtyTube, a fast and modern platform offering curated trending videos, fashion clips, entertainment, and personalized browsing experiences.{% endblock %}
+{% block twitter_title %}About DirtyTube — Discover Amazing Videos{% endblock %}
+{% block twitter_description %}Explore how DirtyTube brings you trending videos, fashion reels, and high-quality entertainment clips.{% endblock %}
+
+{% block content %}
+
+<!-- Schema.org: Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "DirtyTube",
+  "url": "{{ url_for('main.index', _external=True) }}",
+  "logo": "{{ url_for('static', filename='img/logo.png', _external=True) }}",
+  "description": "DirtyTube is a modern video discovery platform offering trending videos, fashion clips, and personalized browsing experiences.",
+  "sameAs": [
+    "https://www.facebook.com/",
+    "https://www.instagram.com/",
+    "https://www.youtube.com/"
+  ]
+}
+</script>
+
+<section class="about-hero">
+    <div class="container about-container">
+        <h1>About DirtyTube</h1>
+        <p>
+            <strong>DirtyTube</strong> is an advanced, performance-optimized video discovery platform 
+            designed to help users find <strong>trending videos, fashion reels, entertainment clips, 
+            and curated visual content</strong> from around the internet.  
+        </p>
+        <p>
+            Built for speed, simplicity, and modern audiences, DirtyTube delivers a 
+            <strong>smooth viewing experience</strong> with <strong>clean navigation</strong>, fast page loads, 
+            and mobile-first responsiveness.
+        </p>
+    </div>
+</section>
+
+<section class="about-section">
+    <div class="container">
+        <h2>Our Mission</h2>
+        <p>
+            Our mission is to create a platform where users can easily discover 
+            <strong>beautiful video content</strong> in categories like fashion, style, entertainment, lifestyle, 
+            tutorials, and more.  
+        </p>
+        <p>
+            We focus on delivering:
+        </p>
+        <ul class="about-list">
+            <li>⚡ Lightning-fast content delivery</li>
+            <li>🎯 Smart browsing & organized categories</li>
+            <li>⭐ High-resolution, visually appealing videos</li>
+            <li>📱 Mobile-friendly playback & smooth interactions</li>
+            <li>🔒 Safe, privacy-friendly user experience</li>
+        </ul>
+    </div>
+</section>
+
+<section class="about-section">
+    <div class="container">
+        <h2>What Makes DirtyTube Unique?</h2>
+        <p>
+            Unlike generic video sites, DirtyTube is powered by 
+            <strong>high-quality curation</strong> and a <strong>user-first design</strong>.  
+            We focus on:
+        </p>
+        <ul class="about-list">
+            <li><strong>Curated content</strong> — No random uploads, only refined selections.</li>
+            <li><strong>Fast loading pages</strong> — Optimized for SEO and Core Web Vitals.</li>
+            <li><strong>Search-friendly metadata</strong> — Titles, descriptions, and structure optimized for discoverability.</li>
+            <li><strong>Clean UI</strong> — No distractions, ads placed responsibly.</li>
+            <li><strong>Engaging categories</strong> — Fashion, entertainment, trending clips, and more.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="about-section">
+    <div class="container">
+        <h2>Our Story</h2>
+        <p>
+            DirtyTube was created in 2024 with a simple idea:  
+            <strong>Make it easy for people to discover beautiful, engaging videos without complexity.</strong>
+        </p>
+        <p>
+            From a small collection of fashion-based clips, the platform has grown into a 
+            <strong>full video discovery ecosystem</strong> with categories, pagination, related content, 
+            optimized performance, and a global audience.
+        </p>
+        <p>
+            built with the latest technologies to ensure:
+        </p>
+        <ul class="about-list">
+            <li>Responsive design</li>
+            <li>Secure backend architecture</li>
+            <li>Optimized resources for SEO</li>
+            <li>Faster user experience</li>
+        </ul>
+    </div>
+</section>
+
+<section class="about-section">
+    <div class="container">
+        <h2>Get in Touch</h2>
+        <p>
+            Have questions, suggestions, collaboration ideas, or feedback?  
+            We’d love to hear from you. Use the contact form below to reach us instantly.
+        </p>
+
+        <div class="contact-form-wrapper">
+            <iframe 
+                src="https://reachoutly.vercel.app/"
+                title="Contact Form — ReachOutly"
+                loading="lazy"
+                frameborder="0"
+                class="contact-iframe">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

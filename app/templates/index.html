@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Video Platform{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% if mode != "home" %}
+    <section class="hero">
+        {% if mode == "popular" %}
+            <h2>Most Popular Videos</h2>
+            <p>Top trending videos based on views</p>
+        {% elif mode == "browse" %}
+            <h2>Browse All Videos</h2>
+            <p>Explore recent uploads and new content</p>
+        {% else %}
+            <h2>Discover Amazing Videos</h2>
+            <p>Browse our curated collection of high-quality video content</p>
+        {% endif %}
+    </section>
+    {% endif %}
+
+
+
+    <section class="video-grid">
+        {% if videos %}
+            {% for video in videos %}
+            <div class="video-card" data-uuid="{{ video.uuid }}">
+                <a href="{{ url_for('video.video_detail', uuid=video.uuid) }}" class="video-link">
+                    <div class="video-thumbnail">
+                        {% if video.poster_url %}
+                        <img src="{{ video.poster_url }}" alt="{{ video.title }}" loading="lazy">
+                        {% else %}
+                        <div class="placeholder-thumbnail"></div>
+                        {% endif %}
+                        <div class="duration-badge">{{ video.duration }}</div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">{{ video.title }}</h3>
+                        <div class="video-meta">
+                            <span class="views">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M8 3C4.5 3 1.5 5.5 0.5 8C1.5 10.5 4.5 13 8 13C11.5 13 14.5 10.5 15.5 8C14.5 5.5 11.5 3 8 3Z" stroke="currentColor" stroke-width="1.5"/>
+                                    <circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                                {{ '{:,}'.format(video.views or 0) }}
+                            </span>
+                            <span class="likes">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M8 14L7 13C3.5 9.8 1 7.5 1 5C1 3.3 2.3 2 4 2C5 2 6 2.5 6.5 3.2C7 2.5 8 2 9 2C10.7 2 12 3.3 12 5C12 7.5 9.5 9.8 6 13L8 14Z" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                                {{ '{:,}'.format(video.likes or 0) }}
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="no-videos">
+                <p>No videos available at the moment.</p>
+            </div>
+        {% endif %}
+    </section>
+</div>
+
+{% if total_pages > 1 %}
+<div class="pagination-container">
+    
+    <!-- Prev button -->
+    {% if prev_page %}
+    <a href="/?page={{ prev_page }}" class="pagination-btn">←</a>
+    {% else %}
+    <span class="pagination-btn disabled">←</span>
+    {% endif %}
+
+    <!-- Page numbers -->
+    <div class="pagination-numbers">
+
+        {# Show first page #}
+        {% if page > 3 %}
+        <a href="/?page=1" class="pagination-number">1</a>
+        <span class="dots">...</span>
+        {% endif %}
+
+        {# Middle dynamic numbers #}
+        {% for num in range(page-1, page+2) %}
+            {% if num > 0 and num <= total_pages %}
+                {% if num == page %}
+                <span class="pagination-number active">{{ num }}</span>
+                {% else %}
+                <a href="/?page={{ num }}" class="pagination-number">{{ num }}</a>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+
+        {# Show last page #}
+        {% if page < total_pages - 2 %}
+        <span class="dots">...</span>
+        <a href="/?page={{ total_pages }}" class="pagination-number">{{ total_pages }}</a>
+        {% endif %}
+    </div>
+
+    <!-- Next button -->
+    {% if next_page %}
+    <a href="/?page={{ next_page }}" class="pagination-btn">→</a>
+    {% else %}
+    <span class="pagination-btn disabled">→</span>
+    {% endif %}
+
+</div>
+{% endif %}
+
+
+
+{% endblock %}

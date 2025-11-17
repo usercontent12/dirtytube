@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Error – {{ error_code }}{% endblock %}
+
+{% block content %}
+<div class="error-page">
+    <h1>{{ error_code }}</h1>
+    <p>{{ error_message }}</p>
+
+    <a href="/" class="btn">Return Home</a>
+</div>
+
+<style>
+.error-page {
+    padding: 60px 20px;
+    text-align: center;
+}
+.error-page h1 {
+    font-size: 80px;
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+.error-page p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.btn {
+    padding: 12px 24px;
+    background: var(--primary);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+}
+</style>
+{% endblock %}
