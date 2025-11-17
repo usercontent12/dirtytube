@@ -84,6 +84,7 @@ def register_blueprints(app):
     app.register_blueprint(sitemap_bp)
     app.register_blueprint(feeds_bp)
     app.register_blueprint(robots_bp)
+    app.register_blueprint(verification_bp)
 
 
 # ============================================================
