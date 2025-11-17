@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 {% set schema_video = video %}
 
+{% block head_scripts %}
+<script>
+window.va = window.va || function(){ (window.vaq = window.vaq || []).push(arguments); };
+window.si = window.si || function(){ (window.siq = window.siq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+{% endblock %}
 
 {% block title %}{{ video.title }} - DirtyTube{% endblock %}
 
@@ -180,5 +188,11 @@ document.getElementById("loadMoreBtn").addEventListener("click", loadRelatedVide
 
 // Load first batch automatically
 loadRelatedVideos();
+</script>
+{% endblock %}
+
+{% block body_scripts %}
+<script>
+window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
 </script>
 {% endblock %}
