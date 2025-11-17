@@ -160,5 +160,7 @@
 
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     {% block extra_js %}{% endblock %}
+     <!-- Page-specific body scripts -->
+    {% block body_scripts %}{% endblock %}
 </body>
 </html>
